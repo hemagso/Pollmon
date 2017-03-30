@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Pollmon</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+        <script>
+            $( function() {
+                $( "input" ).checkboxradio({
+                    icon: false
+                });
+            } );
+        </script>
+        <style>
+            .main-container {
+                width: 300px;
+            }
+            .quiz-image {
+                width: 128px;
+                height: 128px;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-role="collapsible-set" class="main-container">
+            {% for i in range(0,5) %}
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>Pergunta {{i}}</h3>
+                    <p>
+                        <img src="static/sprites/1.png" class="quiz-image"/>
+                        <fieldset>
+                            {% for key, value in options.items() %}
+                                <label for="radio-{{i}}-{{key}}">{{ value }}</label>
+                                <input type="radio" name="radio-{{i}}" id="radio-{{i}}-{{key}}">
+                            {% endfor %}
+                        </fieldset>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
